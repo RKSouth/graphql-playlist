@@ -1,7 +1,8 @@
 const graphql = require('graphql')
 //destructering 
 //pay attention to capitalization
-const {GraphQLObjectType} = graphql
+//have to had a string to describe the types below
+const {GraphQLObjectType, GraphQLString} = graphql
 
 //defining a new type
 //this is a function that takes in an object
@@ -11,8 +12,11 @@ const BookType = new GraphQLObjectType({
     //the reason it needs to be a function is when we have multiple types and 
     //they have references to one another then unless we wrap them in a function one type might 
     //not necessarily know what another type is.
+    //Remember this is an ES6 function.
     fields: () => ({
         //we have to use a graphql string (in type) in order for it to understand
-        id: {type:}
+        id: {type:GraphQLString},
+        name: {type: GraphQLString},
+        genre: {type: GraphQLString}
     })
 })
