@@ -1,5 +1,6 @@
 const graphql = require('graphql')
-//destructering 
+const { buildResolveInfo } = require('graphql/execution/execute')
+//destructuring 
 //pay attention to capitalization
 //have to had a string to describe the types below
 const {GraphQLObjectType, GraphQLString} = graphql
@@ -20,3 +21,24 @@ const BookType = new GraphQLObjectType({
         genre: {type: GraphQLString}
     })
 })
+
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    //there are four different types of queries to set up and ech one os going to be a different field inside this root query type
+    //we don't need to wrap a field inside a function because we don't need to worry about the order
+    fields: {
+        //the name here matters because when we are trying to query from the front end this is the name of the parameter
+        book: {
+            type: BookType,
+            //when someone querries the book type they will pass the argument along
+            args: {id: {type: GraphQLString}},
+            //resolve function takes in 2 parameters 
+            //this is the function where we write code to get which ever data we need from the database or other source
+            resolve(parent, args){
+                //where the code goes
+            }
+        }
+    }
+})
+
+module.exports = new GraphQLSchema
