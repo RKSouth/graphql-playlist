@@ -3,7 +3,8 @@ const { buildResolveInfo } = require('graphql/execution/execute')
 //destructuring 
 //pay attention to capitalization
 //have to had a string to describe the types below
-const {GraphQLObjectType, GraphQLString} = graphql
+//added graphqlschema here to export
+const {GraphQLObjectType, GraphQLString, GraphQLSchema} = graphql
 
 //defining a new type
 //this is a function that takes in an object
@@ -40,5 +41,8 @@ const RootQuery = new GraphQLObjectType({
         }
     }
 })
-
-module.exports = new GraphQLSchema
+//export it
+//then pass through our initial route query
+module.exports = new GraphQLSchema({
+    query: RootQuery
+})
