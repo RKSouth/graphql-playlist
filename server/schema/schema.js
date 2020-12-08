@@ -1,5 +1,19 @@
 const graphql = require('graphql')
 const { buildResolveInfo } = require('graphql/execution/execute')
+
+
+//dummy data for population and checking routes
+
+var books = [
+    {name: 'Name of the Wind', genre: 'Fantasy', id: '1'},
+    {name: 'The Final Empire', genre: 'Fantasy', id: '2'},
+    {name: 'The Long Earth', genre: 'Sci-Fi', id: '3'}
+];
+    
+
+
+
+
 //destructuring 
 //pay attention to capitalization
 //have to had a string to describe the types below
