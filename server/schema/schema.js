@@ -1,5 +1,7 @@
 const graphql = require('graphql')
-const { buildResolveInfo } = require('graphql/execution/execute')
+const _ = require('lodash');
+//why was this here- probably put itself there??
+// const { buildResolveInfo } = require('graphql/execution/execute')
 
 
 //dummy data for population and checking routes
@@ -51,6 +53,8 @@ const RootQuery = new GraphQLObjectType({
             //this is the function where we write code to get which ever data we need from the database or other source
             resolve(parent, args){
                 //where the code goes
+                //lodash dot find in the books array where the parameter is an id property that takes in the args id
+                return _.find(books,  { id: args.id})
             }
         }
     }
